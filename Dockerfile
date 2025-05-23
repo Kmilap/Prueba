@@ -1,4 +1,6 @@
 FROM openjdk:17
-COPY "target/QUIZCAMILA-1.jar" "app.jar"
+WORKDIR /app
+COPY . .
+RUN ./mvnw clean package -DskipTests
 EXPOSE 8765
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "target/QUIZCAMILA-1.jar"]
